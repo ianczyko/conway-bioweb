@@ -1,0 +1,37 @@
+<!--
+	@file about.html
+    @brief the AngularJS partial 'about'
+-->
+
+<h1>My application - {{'MAIN' | translate}}</h1>
+
+<ul ng-controller="versionController">
+  <li id="server_time" ng-controller="currentController">{{'TIME' | translate}}: <em id="server_time_val">{{current.time}}</em></li>
+  <li id="server_version">{{'SRV_VER' | translate}}: <em id="server_version_val">{{server_ver.server}}</em></li>
+  <li id="db_version">{{'DB_VER' | translate}}: <em id="db_version_val">{{server_ver.database}}</em></li>
+  <li id="client_version">{{'CLI_VER' | translate}}: <em id="client_version_val">{{client_ver}}</em></li>
+  <li id="cpp_get_number">C++ getNumber() result: <em id="cpp_get_number_val">{{cpp_get.number}}</em></li>
+</ul>
+
+<p>{{ 'CPP_COMMANDS' | translate }}
+<ul ng-controller="currentController" id="cpp_commands">
+  <li ng-repeat="(command_id, command_desc) in cpp_commands">
+	ID: <em id="cpp_command_id">{{command_id}}</em>,
+	{{'STATE' | translate}}: {{command_desc.state}},
+	<strong ng-if="command_desc.state == 'PENDING' ">
+	  {{'PROGRESS' | translate}}: {{command_desc.progress}}
+	</strong>
+  </li>
+</ul>
+</p>
+
+
+<ul ng-controller="commandController">
+  <li id="cpp_commands_number">{{'COMMANDS_NUMBER' | translate}}: <em id="cpp_commands_number_val">{{cpp_commands_no}}</em>
+	<button ng-click="clickNewCommand()" id="cpp_new_command_button" >
+	  {{'START_NEW_COMMAND' | translate }}
+	</button>
+
+
+  </li>
+</ul>

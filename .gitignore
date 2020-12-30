@@ -1,8 +1,12 @@
 __pycache__
 bower_components
 lighttpd.log
+lighttpd.pid
 .sconsign.dblite
 calc_test
+
+# Editor
+.vscode
 
 # Prerequisites
 *.d
@@ -12,6 +16,7 @@ calc_test
 *.lo
 *.o
 *.obj
+*.os
 
 # Precompiled Headers
 *.gch

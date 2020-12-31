@@ -10,6 +10,7 @@ import version.models
 web_srv_prefix = version.models.getWebSrvPrefix()
 
 urlpatterns = patterns('',
+                       url(r'^' + web_srv_prefix + '/evolve/', views.evolve_request_wrapper, name='evolve'),
                        url(r'^' + web_srv_prefix + '/ajax/(?P<module>\w+)/(?P<function>\w+)/', views.ajax, name='ajax'),
                        url(r'^$', views.index, name='index')
 )

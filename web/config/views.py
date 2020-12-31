@@ -14,8 +14,6 @@ import version
 import version.views
 import current
 import current.views
-import calcpy
-import calcpy.views
 import conwaypy
 import conwaypy.views
 
@@ -24,8 +22,12 @@ def index(request):
     """for test working server"""
     return django.http.HttpResponse("MyApp server" )
 
+def evolve_request_wrapper(request):
+    return conwaypy.views.evolve_request(request)
+
 def ajax(request, module, function):
     """dispatch ajax requests"""
+    print(request)
     try:
         fun = getattr(getattr(globals()[str(module)], 'views'), str(function))
         data = json.dumps( fun(request.GET) )

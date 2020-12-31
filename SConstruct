@@ -87,9 +87,9 @@ elif env['r'] == 'd':
     os.system('python3 build_web/manage.py runserver ' + WEB_CLIENT_HOST + ':' + WEB_CLIENT_PORT)
 elif env['t'] == 'w':
     if(platform.system() == "Linux"):
-        os.system('python3 build_web/manage.py test version current calcpy')
+        os.system('python3 build_web/manage.py test version current conwaypy')
     elif(platform.system() == "Windows"):
-        os.system('python3 build_web\manage.py test version current calcpy')
+        os.system('python3 build_web\manage.py test version current conwaypy')
 elif env['t'] == 'j':
     child_process = subprocess.Popen('python3 client/tests/srv.py ', shell=True, stdout=subprocess.PIPE)
     if(platform.system() == "Linux"):
@@ -100,16 +100,16 @@ elif env['t'] == 'j':
         os.system('taskkill /F /T /PID %d' % child_process.pid)
 elif env['cov'] == 1:
     if(platform.system() == "Linux"):
-        os.system("coverage run --source build_web/ build_web/manage.py test version current calcpy")
+        os.system("coverage run --source build_web/ build_web/manage.py test version current conwaypy")
         print("\n")
         os.system("coverage report -m")
         print("\n")
 elif env['t'] == 'c':
     if(platform.system() == "Linux"):
-        addToLD('./calc')
-        os.system('calc/calc_test')
+        addToLD('./conway')
+        os.system('conway/conway_test')
     elif(platform.system() == "Windows"):
-        os.system('calc\calc_test.exe')
+        os.system('conway\conway_test.exe')
 elif env['t'] == 'f':
     if platform.system() == "Linux":
         os.system('lighttpd -f client/lighttpd.develop')
@@ -141,7 +141,7 @@ elif env['doxygen'] == 1:
     os.system('doxygen')
     env.SideEffect('Doxygen', 'Doxygen_in')
 else: #build app
-    SConscript(['calc/SConscript', 'web/SConscript', 'client/SConscript'], exports=['env'] )
+    SConscript(['conway/SConscript', 'web/SConscript', 'client/SConscript'], exports=['env'] )
 
 env.Clean('.','../doc/doxygen')
 env.Clean('.','Doxyfile')

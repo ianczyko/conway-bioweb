@@ -5,6 +5,7 @@ lighttpd.pid
 .sconsign.dblite
 calc_test
 build_web
+conway/conway_test
 
 # Editor
 .vscode

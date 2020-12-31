@@ -28,7 +28,7 @@ INSTALLED_APPS = (
 #    'django.contrib.staticfiles',
     'version',
     'current',
-    'calcpy'
+    'conwaypy'
 )
 
 MIDDLEWARE_CLASSES = (

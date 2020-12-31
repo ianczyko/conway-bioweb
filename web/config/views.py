@@ -16,6 +16,8 @@ import current
 import current.views
 import calcpy
 import calcpy.views
+import conwaypy
+import conwaypy.views
 
 ## for test working server
 def index(request):

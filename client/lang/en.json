@@ -9,5 +9,6 @@
 	"START_NEW_COMMAND" : "start new command",
 	"CPP_COMMANDS" : "c++ commands list",
 	"STATE" : "state",
-	"PROGRESS" : "progress"
+	"PROGRESS" : "progress",
+	"GAME_LABEL": "Conway's Game of Life"
 }

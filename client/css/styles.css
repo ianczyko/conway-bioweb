@@ -34,4 +34,36 @@ body {
 	float:left;
     padding: 5px;
 }
-
+.button {
+    background-color: white;
+    border: 2px solid #121212;
+    border-radius: 0px;
+    color: black;
+    padding: 16px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    transition-duration: 0.4s;
+    cursor: pointer;
+}
+.button:hover {background-color: #e7e7e7;}
+#main-div {
+    text-align: center;
+}
+#game-grid {
+    text-align: center;
+    margin: auto;
+    background-color: #5e5e5e
+}
+.box {
+    height: 15px;
+    width: 15px;
+}
+.alive {
+    background-color: #121212;
+}
+.dead {
+    background-color: white;
+}

@@ -9,5 +9,6 @@
 	"START_NEW_COMMAND" : "nowa komenda",
 	"CPP_COMMANDS" : "lista komend c++",
 	"STATE": "stan",
-	"PROGRESS": "postęp"
+	"PROGRESS": "postęp",
+	"GAME_LABEL": "Gra w życie"
 }

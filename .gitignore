@@ -4,6 +4,7 @@ lighttpd.log
 lighttpd.pid
 .sconsign.dblite
 calc_test
+build_web
 
 # Editor
 .vscode

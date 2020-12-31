@@ -13,6 +13,7 @@ angular.module('myApp', ['ngRoute', 'pascalprecht.translate', 'myAppControllers'
                 $translateProvider.useStaticFilesLoader({
                     prefix: 'lang/',
                     suffix: '.json' });
+                $translateProvider.useSanitizeValueStrategy('escape')
                 $translateProvider.preferredLanguage('en');
             }]);
 

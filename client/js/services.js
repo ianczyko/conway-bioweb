@@ -3,30 +3,22 @@
 
 angular.module('myAppServices', [])
     .service('srvInfo', //current information from zsm server
-             function($http) {
-                 this.baseURL = client_server_prefix + '/ajax/'; //the prefix defined in version.js
-
-                //  this.getVersion = function(callback) {
-                //      return $http.get(this.baseURL + 'version/get').success(callback);
-				//  };
-                //  this.getCurrent = function(callback) {
-                //      return $http.get(this.baseURL + 'current/get').success(callback);
-                //  };
-                 this.evolve = function(grid, callback) {
-                    data = {
-                        'grid' : grid
+            function($http) {
+                this.baseURL = client_server_prefix + '/ajax/'; //the prefix defined in version.js
+                // $http.get(this.baseURL + 'conwaypy/acquire_csrf/').success(function(data){
+                //     // self.csrf = data
+                //     console.log($cookies.get('csrftoken'));
+                //     $http.defaults.headers.post['X-CSRFToken'] = $cookies.get('csrftoken');
+                // });
+                this.evolve = function(grid, callback) {
+                    var req = {
+                        method: 'POST',
+                        url: client_server_prefix + '/evolve/',
+                        headers: {
+                            'Content-Type': 'application/x-www-form-urlencoded'
+                        },
+                        data: { 'grid': grid }
                     }
-                    return $http.post(this.baseURL + 'conwaypy/evolve_request', data).success(callback);
-                 };
-			 });
-	// .service('srvCommands', //commands
-	// 		 function($http) {
-    //              this.baseURL = client_server_prefix + '/ajax/calcpy/'; //the prefix is defined in version.js
-
-    //              this.getCppCommands = function(callback) {
-    //                  return $http.get(this.baseURL + 'getCommands').success(callback);
-    //              };
-	// 			 this.startCommand = function(callback) {
-	// 				 return $http.get(this.baseURL + 'startCommand').success(callback);
-	// 			 };
-    //          });
+                    $http(req).then(callback);
+                };
+            });

@@ -10,5 +10,10 @@
 	"CPP_COMMANDS" : "c++ commands list",
 	"STATE" : "state",
 	"PROGRESS" : "progress",
+	"EVOLVE" : "Evolve",
+	"SIMSTART" : "Start simulation",
+	"SIMSTOP" : "Stop simulation",
+	"GENERATION" : "Generation",
+	"THREADS" : "Threads",
 	"GAME_LABEL": "Conway's Game of Life"
 }

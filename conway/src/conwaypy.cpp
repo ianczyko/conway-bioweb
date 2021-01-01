@@ -57,9 +57,9 @@ Py::list to_py_grid(const Grid & cpp_grid){
 /**
  * evolve() adapter. Adapts Python's list of lists to c++'s vector of vectors
  */
-Py::list evolve_adapter(Py::list grid){
+Py::list evolve_adapter(Py::list grid, int thread_count){
     auto cpp_grid = to_cpp_grid(grid);
-    cpp_grid = evolve(cpp_grid);
+    cpp_grid = evolve(cpp_grid, thread_count);
     return to_py_grid(cpp_grid);
 }
 

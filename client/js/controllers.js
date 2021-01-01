@@ -38,6 +38,7 @@ angular.module('myAppControllers', [])
 						$scope.generation++;
 						srvInfo.evolve(
 							$scope.grid,
+							parseInt($scope.threads),
 							function(data) {
 								$scope.grid = data.data.grid;
 						});
@@ -63,6 +64,7 @@ angular.module('myAppControllers', [])
 						// Make sure that the interval is destroyed too
 						$scope.stopSimulation();
 					});
+					$scope.threads = "1";
 					$scope.rows = 32;
 					$scope.columns = 32;
 					$scope.initialArrangement();

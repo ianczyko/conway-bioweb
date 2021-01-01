@@ -24,7 +24,7 @@
 using Grid = std::vector<std::vector<bool>>;
 
 //! Evolve a grid by 1 generation.
-CONWAY_DLL( Grid evolve(Grid); )
+CONWAY_DLL( Grid evolve(Grid, int); )
 
 
 #endif //CONWAY_HPP

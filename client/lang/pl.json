@@ -10,5 +10,10 @@
 	"CPP_COMMANDS" : "lista komend c++",
 	"STATE": "stan",
 	"PROGRESS": "postęp",
+	"EVOLVE" : "Ewoluuj",
+	"SIMSTART" : "Rozpocznij symulację",
+	"SIMSTOP" : "Zatrzymaj symulację",
+	"GENERATION" : "Generacja",
+	"THREADS" : "Wątki",
 	"GAME_LABEL": "Gra w życie"
 }

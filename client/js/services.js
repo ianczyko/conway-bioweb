@@ -10,14 +10,17 @@ angular.module('myAppServices', [])
                 //     console.log($cookies.get('csrftoken'));
                 //     $http.defaults.headers.post['X-CSRFToken'] = $cookies.get('csrftoken');
                 // });
-                this.evolve = function(grid, callback) {
+                this.evolve = function(grid, threads, callback) {
                     var req = {
                         method: 'POST',
                         url: client_server_prefix + '/evolve/',
                         headers: {
                             'Content-Type': 'application/x-www-form-urlencoded'
                         },
-                        data: { 'grid': grid }
+                        data: { 
+                            'grid': grid,
+                            'threads': threads
+                        }
                     }
                     $http(req).then(callback);
                 };

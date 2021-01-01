@@ -5,8 +5,8 @@
 #include "conway.hpp"
 
 bool check_node(const Grid & grid, const int & row, const int & col){
-    if(row < 0 || row >= grid.size()) return false;
-    if(col < 0 || col >= grid[row].size()) return false;
+    if(row < 0 || row >= static_cast<int>(grid.size())) return false;
+    if(col < 0 || col >= static_cast<int>(grid[row].size())) return false;
     return grid[row][col];
 }
 
@@ -22,7 +22,7 @@ int alive_neighbours(const Grid & grid, const int & row, const int & col){
 }
 
 //implementation
-CONWAY_DLL(Grid evolve(Grid grid) ) {
+CONWAY_DLL(Grid evolve(Grid grid, int threads) ) {
 	const int rows = grid.size();
     const int cols = grid[0].size();
 	Grid new_grid(rows, std::vector<bool>(cols, false));
@@ -32,7 +32,7 @@ CONWAY_DLL(Grid evolve(Grid grid) ) {
             if(alive_n == 3){
                 new_grid[i][j] = true; 
             }
-            if(grid[i][j] && alive_n == 2){
+            else if(grid[i][j] && alive_n == 2){
                 new_grid[i][j] = true; 
             }
         }

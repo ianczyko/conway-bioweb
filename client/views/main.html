@@ -16,9 +16,17 @@
       </th>
     </tr>
   </table>
-  <p>{{generation}}</p>
+  <p>{{'GENERATION' | translate}}: {{generation}}</p>
   <button ng-hide="simulationIsOn"  class="button" ng-click="resetGrid()">Reset</button>
-  <button ng-hide="simulationIsOn"  class="button" ng-click="evolve()">Evolve</button>
-  <button ng-hide="simulationIsOn"  class="button" ng-click="startSimulation()">Start Simulation</button>
-  <button ng-hide="!simulationIsOn" class="button" ng-click="stopSimulation()">Stop Simulation</button>
+  <button ng-hide="simulationIsOn"  class="button" ng-click="evolve()">{{'EVOLVE' | translate}}</button>
+  <button ng-hide="simulationIsOn"  class="button" ng-click="startSimulation()">{{'SIMSTART' | translate}}</button>
+  <button ng-hide="!simulationIsOn" class="button" ng-click="stopSimulation()">{{'SIMSTOP' | translate}}</button>
+  <br/>
+  <div ng-hide="simulationIsOn">
+    <p>{{'THREADS' | translate}}:</p>
+    <label><input type="radio" ng-model="threads" value="1">1</label>
+    <label><input type="radio" ng-model="threads" value="2">2</label>
+    <label><input type="radio" ng-model="threads" value="4">4</label>
+    <label><input type="radio" ng-model="threads" value="8">8</label>
+  </div> 
 </div>

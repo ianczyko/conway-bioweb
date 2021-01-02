@@ -8,41 +8,41 @@ from . import conway
 from . import views
 
 
-# class CalcPyLibraryTestCase(django.test.TestCase):
-#     """integration test, call C++ library interface from Python"""
+class ConwayPyLibraryTestCase(django.test.TestCase):
+    """integration test, call C++ library interface from Python"""
 
-#     def test01getNumber(self):
-#         """test the return number"""
-#         self.assertEqual( calc.getNumber(), 1234 )
-
-#     def test02command(self):
-#         """start/stop tick command test"""
-#         cmdmgr = calc.CommandManager()
-#         cmd_id = cmdmgr.start()
-#         self.assertNotEqual( cmdmgr.getState(cmd_id), calc.DONE )
-#         for i in range(100):
-#             time.sleep(0.1)
-#             if cmdmgr.getState(cmd_id) == calc.DONE:
-#                 break
-#         self.assertEqual( cmdmgr.getState(cmd_id), calc.DONE )
-#         self.assertEqual( len(cmdmgr.getIds()), 1 )
+    def test01evolve(self):
+        """test the return number"""
+        blinker_vertical = [
+            [False, True, False],
+            [False, True, False],
+            [False, True, False],
+        ]
+        blinker_horizontal = [
+            [False, False, False],
+            [True,  True,  True],
+            [False, False, False],
+        ]
+        self.assertEqual( conway.evolve(blinker_vertical), blinker_horizontal )
 
 
-# class CalcPyViewTestCase(django.test.TestCase):
-#     """module view test"""
+class ConwayPyViewTestCase(django.test.TestCase):
+    """module view test"""
 
-#     def test01getNumber(self):
-#         """check if service return proper dict"""
-#         self.assertEqual( views.getNumber({}), {'number': 1234})
+    def test01getNumber(self):
+        """check if service return proper dict"""
+        blinker_vertical = [
+            [False, True, False],
+            [False, True, False],
+            [False, True, False],
+        ]
+        blinker_horizontal = [
+            [False, False, False],
+            [True,  True,  True],
+            [False, False, False],
+        ]
+        self.assertEqual( views.evolve_request(blinker_vertical), blinker_horizontal)
 
-#     def test02getCommands(self):
-#         """check if service return proper dict"""
-#         self.assertEqual( views.getCommands({}),
-#                           {1: {'progress': 0.995, 'state': 'DONE'}})
-#         dict1 = views.getCommands({})
-#         views.startCommand({});
-#         dict2 = views.getCommands({})
-#         self.assertEqual( len(dict1) + 1, len(dict2) )
 
 
 

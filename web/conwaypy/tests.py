@@ -3,6 +3,9 @@
 
 import time
 import django.test
+import json
+from django.http import JsonResponse
+
 
 from . import conway
 from . import views
@@ -23,25 +26,33 @@ class ConwayPyLibraryTestCase(django.test.TestCase):
             [True,  True,  True],
             [False, False, False],
         ]
-        self.assertEqual( conway.evolve(blinker_vertical), blinker_horizontal )
+        self.assertEqual( conway.evolve(blinker_vertical, 1), blinker_horizontal )
 
+class MyRequest:
+    pass
 
 class ConwayPyViewTestCase(django.test.TestCase):
     """module view test"""
 
     def test01getNumber(self):
         """check if service return proper dict"""
-        blinker_vertical = [
-            [False, True, False],
-            [False, True, False],
-            [False, True, False],
-        ]
+        request = MyRequest()
+        request.body = json.dumps({
+            'grid': [
+                [False, True, False],
+                [False, True, False],
+                [False, True, False],
+            ],
+            'threads': 1
+        }).encode('utf-8')
         blinker_horizontal = [
             [False, False, False],
             [True,  True,  True],
             [False, False, False],
         ]
-        self.assertEqual( views.evolve_request(blinker_vertical), blinker_horizontal)
+        response = views.evolve_request(request)
+        parsed = json.loads(response.content.decode('utf-8'))
+        self.assertEqual( parsed['grid'], blinker_horizontal )
 
 
 

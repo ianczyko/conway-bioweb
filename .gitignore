@@ -19,6 +19,7 @@ conway/conway_test
 *.o
 *.obj
 *.os
+*.pyc
 
 # Precompiled Headers
 *.gch

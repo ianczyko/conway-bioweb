@@ -5,7 +5,7 @@
 
 <h1>My application - {{'MAIN' | translate}}</h1>
 <div ng-controller="conway" id="main-div">
-  <h1>{{'GAME_LABEL' | translate}}</h1>
+  <h1 id="gameLabel">{{'GAME_LABEL' | translate}}</h1>
   <table id="game-grid">
     <tr ng-repeat = "row in grid">
       <th ng-repeat = "node in row track by $index"
@@ -16,14 +16,14 @@
       </th>
     </tr>
   </table>
-  <p>{{'GENERATION' | translate}}: {{generation}}</p>
-  <button ng-hide="simulationIsOn"  class="button" ng-click="resetGrid()">Reset</button>
-  <button ng-hide="simulationIsOn"  class="button" ng-click="evolve()">{{'EVOLVE' | translate}}</button>
-  <button ng-hide="simulationIsOn"  class="button" ng-click="startSimulation()">{{'SIMSTART' | translate}}</button>
-  <button ng-hide="!simulationIsOn" class="button" ng-click="stopSimulation()">{{'SIMSTOP' | translate}}</button>
+  <p id="generationCountParagraph">{{'GENERATION' | translate}}: {{generation}}</p>
+  <button ng-hide="simulationIsOn"  class="button" id="resetBtn" ng-click="resetGrid()">Reset</button>
+  <button ng-hide="simulationIsOn"  class="button" id="evolveBtn" ng-click="evolve()">{{'EVOLVE' | translate}}</button>
+  <button ng-hide="simulationIsOn"  class="button" id="startBtn" ng-click="startSimulation()">{{'SIMSTART' | translate}}</button>
+  <button ng-hide="!simulationIsOn" class="button" id="stopBtn" ng-click="stopSimulation()">{{'SIMSTOP' | translate}}</button>
   <br/>
   <div ng-hide="simulationIsOn">
-    <p>{{'THREADS' | translate}}:</p>
+    <p id="threadCountParagraph">{{'THREADS' | translate}}:</p>
     <label><input type="radio" ng-model="threads" value="1">1</label>
     <label><input type="radio" ng-model="threads" value="2">2</label>
     <label><input type="radio" ng-model="threads" value="4">4</label>

@@ -89,50 +89,31 @@ class TestFunctionalBioweb(unittest.TestCase):
         title = self.browser.title
         if not isinstance(title, str):
             title = title.decode()
-        self.assertEqual(title, u'MyApp')
+        self.assertEqual(title, u'Conway\'s Game of Life')
 
     def test03TabTranslations(self):
         """test if translations works"""
         self.clickMenuLink('#a_lang_en')
-        self.assertEqual(self.findElement('server_time', type='id').text[:len('server time:')], u'server time:')
-        self.assertEqual(self.findElement('server_version', type='id').text[:len('server version:')], u'server version:')
-        self.assertEqual(self.findElement('db_version', type='id').text[:len('db version:')], u'db version:')
-        self.assertEqual(self.findElement('client_version', type='id').text[:len('client version:')], u'client version:')
-        self.assertEqual(self.findElement('cpp_get_number', type='id').text[:len('C++ getNumber() result:')], u'C++ getNumber() result:')
+        self.assertEqual(self.findElement('gameLabel', type='id').text[:len('Conway\'s Game of Life')], u'Conway\'s Game of Life')
+        self.assertEqual(self.findElement('evolveBtn', type='id').text[:len('Evolve')], u'Evolve')
+        self.assertEqual(self.findElement('startBtn', type='id').text[:len('Start simulation')], u'Start simulation')
+        self.assertEqual(self.findElement('stopBtn', type='id').text[:len('Stop simulation')], u'Stop simulation')
 
         self.clickMenuLink('#a_lang_pl')
-        self.assertEqual(self.findElement('server_time', type='id').text[:len('czas serwera:')], u'czas serwera:')
-        self.assertEqual(self.findElement('server_version', type='id').text[:len('wersja serwera:')], u'wersja serwera:')
-        self.assertEqual(self.findElement('db_version', type='id').text[:len('wersja bazy danych:')], u'wersja bazy danych:')
-        self.assertEqual(self.findElement('client_version', type='id').text[:len('wersja klienta:')], u'wersja klienta:')
-        self.assertEqual(self.findElement('cpp_get_number', type='id').text[:len('C++ getNumber() result:')], u'C++ getNumber() result:')
+        self.assertEqual(self.findElement('gameLabel', type='id').text[:len('Gra w życie')], u'Gra w życie')
+        self.assertEqual(self.findElement('evolveBtn', type='id').text[:len('Ewoluuj')], u'Ewoluuj')
+        self.assertEqual(self.findElement('evolveBtn', type='id').text[:len('Rozpocznij symulację')], u'Rozpocznij symulację')
+        self.assertEqual(self.findElement('evolveBtn', type='id').text[:len('Zatrzymaj symulację')], u'Zatrzymaj symulację')
 
-    def test04About(self):
-        """test 'about' page"""
-        server_time = self.browser.find_by_id('server_time_val').first.text
-        self.assertTrue(len(server_time) > 0)
-        self.assertTrue(len(self.findElement('server_version_val', type='id').text) > 0)
-        self.assertTrue(len(self.findElement('db_version_val', type='id').text) > 0)
-        self.assertTrue(len(self.findElement('client_version_val', type='id').text) > 0)
-
-        server_time_after = server_time
-        counter = 0
-        while server_time_after == server_time and counter < 10:
-            server_time_after = self.browser.find_by_id('server_time_val').first.text
-            time.sleep(1)
-            counter += 1
-        self.assertNotEqual(server_time, server_time_after)
-
-    def test05CppCommands(self):
+    def test05CppEvolve(self):
         """test new command creation"""
-        self.assertTrue(self.findElement('cpp_commands_number_val', type='id').text, "0");
-        self.clickMenuLink('cpp_new_command_button', type='id');
+        self.assertTrue(self.findElement('generationCountParagraph', type='id').text[-1], "0");
+        self.clickMenuLink('evolveBtn', type='id');
         time.sleep(1)
-        self.assertTrue(self.findElement('cpp_commands_number_val', type='id').text, "1");
-        self.assertTrue(self.findElement('cpp_command_id', type='id').text, "1");
-        self.clickMenuLink('cpp_new_command_button', type='id');
+        self.assertTrue(self.findElement('generationCountParagraph', type='id').text[-1], "1");
+        self.clickMenuLink('evolveBtn', type='id');
         time.sleep(1)
-        self.assertTrue(self.findElement('cpp_commands_number_val', type='id').text, "2");
+        self.assertTrue(self.findElement('generationCountParagraph', type='id').text[-1], "2");
 
 if __name__ == "__main__":
     ## Browser used in the tests

@@ -42,7 +42,7 @@ Thread 1    |   Thread 2
 ```
 
 ```
-Thread 1    |   Thread 2    |   Thread 1     |   Thread 2
+Thread 1    |   Thread 2    |   Thread 3     |   Thread 4
 1  2  3  4  |   5  6  7  8  |   9  10 11 12  |   13 14 15 16
 ```
 
@@ -55,4 +55,4 @@ grid NxN, N = 16384
 4 thread: 199.2044 s
 ```
 
-Symulacja uwzględnia czas na skonwertowanie `boost::python::list` na `std::vector<std::vector<bool>>` - możliwe, że przez to czas wykonania nie zachowuje się dokładnie jak $`\frac{1}{liczba wątków}`$.
+Symulacja uwzględnia czas na skonwertowanie `boost::python::list` na `std::vector<std::vector<bool>>` - możliwe, że przez to czas wykonania nie zachowuje się odwrotnie proporcjonalnie do liczby wątków.
